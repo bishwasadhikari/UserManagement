@@ -2,8 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa" 
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
@@ -21,10 +20,12 @@
 	<context:component-scan base-package="com.app.bishwas.service.impl"></context:component-scan>
 	<context:component-scan base-package="com.app.bishwas.dao"></context:component-scan>
 	<context:component-scan base-package="com.app.bishwas.dao.impl"></context:component-scan>
-	<!-- <context:component-scan base-package="com.app.usermanagement.authhandler"></context:component-scan> -->
-	<!-- <context:property-placeholder location="classpath:application.properties" /> -->
+	<context:component-scan base-package="com.app.bishwas.authhandler"></context:component-scan>
+	<!-- <context:property-placeholder location="classpath:application.properties" 
+		/> -->
 
-	<!-- <bean id="authSuccessHandler" class="com.app.usermanagement.authhandler.AuthSuccessHandler" /> -->
+	<bean id="authSuccessHandler" class="com.app.bishwas.authhandler.AuthSuccessHandler">
+	</bean>
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.bishwas.domain.User;
 import com.app.bishwas.service.IUserService;
@@ -22,15 +23,40 @@ public class HomeController {
 	@Autowired
 	private IUserService userService;
 
-	/*private static final Logger logger = LoggerFactory.getLogger(HomeController.class);*/
+	/*
+	 * private static final Logger logger =
+	 * LoggerFactory.getLogger(HomeController.class);
+	 */
 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		model.addAttribute("users", userService.findAllUser());
+		return "login";
+	}
 
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView login(@RequestParam(value = "authFailed", required = false) String authFailed,
+			@RequestParam(value = "unauthorized", required = false) boolean unauthorized,
+			@RequestParam(value = "logout", required = false) String logout) {
+		ModelAndView model = new ModelAndView();
+		if (authFailed != null) {
+			model.addObject("authFailed", "Invalid username and password");
+		}
+		if (unauthorized) {
+			model.addObject("authFailed", "Sorry, you are not allowed to view this page. You are logged out.");
+		}
+		if (logout != null) {
+			model.addObject("msg", "You've been loged out successfully.");
+		}
+		model.setViewName("login");
+		return model;
+	}
+	
+	@RequestMapping(value = "/auth/admin", method = RequestMethod.GET)
+	public String openHome(Model model) {
+		model.addAttribute("users", userService.findAllUser());
 		return "home";
 	}
 
