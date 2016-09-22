@@ -14,6 +14,7 @@
 	src="<c:url value="/resources/js/custom.js" />"></script>
 </head>
 <body>
+	<%@ include file="logout.jsp"%>
 	<div id="container" class="col-md-6 col-sm-8">
 		<h3 align="center">Add User</h3>
 		<form:form modelAttribute="user">

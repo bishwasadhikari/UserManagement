@@ -69,7 +69,7 @@ public class HomeController {
 	@RequestMapping(value = "/auth/admin/add", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute User user) {
 		userService.addUser(user);
-		return "redirect:/";
+		return "redirect:/auth/admin";
 	}
 
 	@RequestMapping(value = "/auth/admin/edit", params = { "id" }, method = RequestMethod.GET)
@@ -82,17 +82,17 @@ public class HomeController {
 	public String openEditUser(@RequestParam(value = "_submit", required = false) String submit,
 			@RequestParam(value = "_cancel", required = false) String cancel, @ModelAttribute User user) {
 		if (cancel != null) {
-			return "redirect:/";
+			return "redirect:/auth/admin";
 		} else {
 			userService.updateUser(user);
 		}
-		return "redirect:/";
+		return "redirect:/auth/admin";
 	}
 
 	@RequestMapping(value = "/auth/admin/remove", params = { "id" }, method = RequestMethod.GET)
 	public String deleteUser(@RequestParam("id") int id) {
 		userService.removeUser(id);
-		return "redirect:/";
+		return "redirect:/auth/admin";
 	}
 
 }

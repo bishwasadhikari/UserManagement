@@ -5,10 +5,13 @@
 <title>Home</title>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<%-- <script type="text/javascript"
-	src="<c:url value="/resources/js/custom.js" />"></script> --%>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/custom.js" />"></script>
 </head>
 <body>
+
+	<%@ include file="logout.jsp"%>
+
 	<div id="maincontent" class="col-md-8 col-sm-12">
 		<h3 align="center">User List</h3>
 		<c:if test="${!empty users}">
