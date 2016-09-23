@@ -8,8 +8,8 @@
 <title>Login</title>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<%-- <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet"
-	type="text/css" /> --%>
+<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet"
+	type="text/css" />
 </head>
 <body>
 	<div class="container" onload='document.loginForm.username.focus();'>

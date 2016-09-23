@@ -1,7 +1,7 @@
 package com.app.bishwas.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.app.bishwas.domain.User;
@@ -54,15 +55,30 @@ public class HomeController {
 		return model;
 	}
 	
+	/*@RequestMapping(value = "/auth/admin", method = RequestMethod.GET)
+	public @ResponseBody List<User> openHome(Model model) {
+		return userService.findAllUser();
+	}*/
+	
 	@RequestMapping(value = "/auth/admin", method = RequestMethod.GET)
 	public String openHome(Model model) {
 		model.addAttribute("users", userService.findAllUser());
 		return "home";
 	}
+	
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String openErrorPage(Model model) {
+		return "errorPage";
+	}
+	
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public String openUserPage(Model model) {
+		return "userPage";
+	}
 
 	@RequestMapping(value = "/auth/admin/add", method = RequestMethod.GET)
-	public String openAddUser(Model model) {
-		model.addAttribute("user", new User());
+	public String openAddUser(@ModelAttribute User user) {
+		/*model.addAttribute("user", new User());*/
 		return "addUser";
 	}
 

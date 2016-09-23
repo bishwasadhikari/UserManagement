@@ -17,7 +17,7 @@
 		<c:if test="${!empty users}">
 			<table class="table table-hover table-bordered">
 				<tr>
-					<th class="col-xs-1">ID</th>
+					<!-- <th class="col-xs-1">ID</th> -->
 					<th class="col-xs-3">First Name</th>
 					<th class="col-xs-3">Last Name</th>
 					<th class="col-xs-3">Phone</th>
@@ -25,7 +25,7 @@
 				</tr>
 				<c:forEach items="${users}" var="user">
 					<tr>
-						<td class="col-xs-1">${user.id}</td>
+						<%-- <td class="col-xs-1">${user.id}</td> --%>
 						<td class="col-xs-3">${user.fName}</td>
 						<td class="col-xs-3">${user.lName}</td>
 						<td class="col-xs-3">${user.phone}</td>

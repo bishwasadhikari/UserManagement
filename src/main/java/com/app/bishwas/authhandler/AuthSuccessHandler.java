@@ -41,6 +41,12 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
 		if (authorities.contains("ROLE_ADMIN")) {
 			url = "/auth/admin";
 		}
+		else if(authorities.contains("ROLE_USER")){
+			url="/user";
+		}
+		else{
+			url="/error";
+		}
 		return url;
 	}
 
